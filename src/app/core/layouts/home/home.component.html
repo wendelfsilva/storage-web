@@ -1,0 +1,41 @@
+<div fxFill fxLayout="column" fxLayoutAlign="start stretch">
+
+    <mat-sidenav-container class="sidenav-container" fxFlex>
+        <mat-sidenav #drawer class="sidenav" fixedInViewport [mode]="'side'" opened="true" [attr.role]="'navigation'">
+
+            <mat-nav-list>
+                <div mat-subheader>{{'general.general' | translate}}</div>
+                <a mat-list-item routerLink="/">
+                    <mat-icon mat-list-icon>home</mat-icon>
+                    <div mat-line>{{'general.home' | translate}}</div>
+                </a>
+
+                <a mat-list-item routerLink="/document/" routerLinkActive="active">
+                    <mat-icon mat-list-icon>settings</mat-icon>
+                    <div mat-line>{{'general.document' | translate}}</div>
+                </a>
+
+                <div mat-subheader>{{'general.admin' | translate}}</div>
+                <a mat-list-item (click)="logout()">
+                    <mat-icon mat-list-icon>exit_to_app</mat-icon>
+                    <div mat-line>{{'general.logout' | translate}}</div>
+                </a>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-sidenav-content cdkScrollable fxLayout="column" fxLayoutAlign="start stretch">
+
+            <mat-toolbar fxFlex="64px">
+                <span>.:: Storage ::.</span>
+                <div fxFlex fxFlexAlign="end"></div>
+                <span>{{user}}</span>
+            </mat-toolbar>
+
+            <div class="sidenav-content" fxFlex>
+                <router-outlet></router-outlet>
+            </div>
+
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+
+</div>

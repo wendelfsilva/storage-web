@@ -1,0 +1,50 @@
+{
+    "errors": {
+        "http_error_0": "Unknown error",
+        "http_error_400": "Bad request",
+        "http_error_401": "Unauthorized",
+        "http_error_403": "Forbidden",
+        "http_error_404": "Page not found",
+        "http_error_405": "Method not allowed",
+        "http_error_406": "Not acceptable",
+        "http_error_407": "Proxy authentication required",
+        "http_error_408": "Request timeout",
+        "http_error_409": "Server conflict",
+        "http_error_410": "Page gone",
+        "http_error_500": "Internal server error",
+        "http_error_502": "Bad gateway",
+        "http_error_503": "Service unavailable",
+        "http_error_505": "Version not supported",
+        "unknown_error": "Oops... there was an unexpected thing!"
+    },
+    "actions": {
+        "search": "Search",
+        "upload": "Upload",
+        "download": "Download",
+        "login": "Login"
+    },
+    "general": {
+        "uploaded_successfully": "Uploaded successfully",
+        "downloaded_successfully": "Downloaded successfully",
+        "no_records_found": "No records found",
+        "login": "Login",
+        "user": "User",
+        "username": "Username",
+        "password": "Password",
+        "general": "General",
+        "admin": "Admin",
+        "home": "Home",
+        "storage": "Storage",
+        "logout": "Logout",
+        "document": "Document",
+        "start_date": "Start date",
+        "end_date": "End date",
+        "id": "Id",
+        "path": "URL",
+        "file": "File",
+        "file_name": "File name",
+        "revision": "Revision",
+        "current_revision": "Current revision",
+        "uploaded_at": "Uploaded at"
+    }
+}

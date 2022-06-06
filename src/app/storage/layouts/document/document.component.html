@@ -1,0 +1,116 @@
+<div fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="20px">
+
+    <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="10px">
+        <h2>{{'actions.upload' | translate}}</h2>
+
+        <mat-card>
+            <form [formGroup]="formUpload">
+                <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="10px">
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                        <mat-form-field fxFlex>
+                            <mat-label>{{'general.path' | translate}}</mat-label>
+                            <input matInput formControlName="path" required>
+                        </mat-form-field>
+
+                        <input #file type="file" (change)="upload($event); file.value = ''" hidden>
+                        <button mat-mini-fab color="primary" (click)="file.click()" [disabled]="formUpload.invalid">
+                            <mat-icon>file_upload</mat-icon>
+                        </button>
+                    </div>
+
+                    <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="10px">
+                        <span>Note 1: URL should start with "/" -> e.g. <i>/documents/reviews/example.jpg</i></span>
+                        <span>Note 2: URL should end with the same file extension</span>
+                    </div>
+                </div>
+            </form>
+        </mat-card>
+    </div>
+
+    <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="10px">
+        <h2>{{'actions.download' | translate}}</h2>
+
+        <mat-card>
+            <form [formGroup]="formDownload">
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                    <mat-form-field fxFlex>
+                        <mat-label>{{'general.path' | translate}}</mat-label>
+                        <input matInput formControlName="path" required>
+                    </mat-form-field>
+
+                    <button mat-mini-fab color="primary" matTooltip="{{'actions.download' | translate}}"
+                            (click)="download()"
+                            [disabled]="formDownload.invalid">
+                        <mat-icon>download</mat-icon>
+                    </button>
+                </div>
+            </form>
+        </mat-card>
+    </div>
+
+    <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="10px">
+        <h2>{{'actions.search' | translate}}</h2>
+
+        <mat-card>
+            <form [formGroup]="formSearch">
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                    <mat-form-field fxFlex>
+                        <mat-label>{{'general.path' | translate}}</mat-label>
+                        <input matInput formControlName="path">
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex>
+                        <mat-label>{{'general.start_date' | translate}}</mat-label>
+                        <input [matDatepicker]="startDate" dateFormat="YYYY-MM-DD" formControlName="start_date" matInput>
+                        <mat-datepicker-toggle [for]="startDate" matSuffix></mat-datepicker-toggle>
+                        <mat-datepicker #startDate [touchUi]="false"></mat-datepicker>
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex>
+                        <mat-label>{{'general.end_date' | translate}}</mat-label>
+                        <input [matDatepicker]="endDate" dateFormat="YYYY-MM-DD" formControlName="end_date" matInput>
+                        <mat-datepicker-toggle [for]="endDate" matSuffix></mat-datepicker-toggle>
+                        <mat-datepicker #endDate [touchUi]="false"></mat-datepicker>
+                    </mat-form-field>
+
+                    <button mat-mini-fab color="primary" matTooltip="{{'actions.search' | translate}}" (click)="search()">
+                        <mat-icon>search</mat-icon>
+                    </button>
+                </div>
+            </form>
+        </mat-card>
+
+        <mat-card>
+            <table mat-table [dataSource]="dataSource">
+                <!-- Id Column -->
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> {{'#' | translate}} </th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+
+                <!-- Path Column -->
+                <ng-container matColumnDef="path">
+                    <th mat-header-cell *matHeaderCellDef> {{'general.path' | translate}}</th>
+                    <td mat-cell *matCellDef="let element"> {{element.path}} </td>
+                </ng-container>
+
+                <!-- Uploaded at Column -->
+                <ng-container matColumnDef="uploaded_at">
+                    <th mat-header-cell *matHeaderCellDef> {{'general.uploaded_at' | translate}}</th>
+                    <td mat-cell *matCellDef="let element"> {{element.uploaded_at | date: 'short'}} </td>
+                </ng-container>
+
+                <!-- No records row -->
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" fxFlex fxLayoutAlign="start center">
+                        {{'general.no_records_found' | translate}}
+                    </td>
+                </tr>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [length]="length"></mat-paginator>
+        </mat-card>
+    </div>
+</div>

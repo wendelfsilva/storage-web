@@ -1,0 +1,42 @@
+<div class="container">
+
+    <div class="content" fxFlex fxLayout="column" fxLayoutAlign="center center">
+
+        <div fxLayout="row" fxLayoutAlign="top center">
+            <span class="title"></span>
+        </div>
+
+        <div fxFlex fxLayout="row" fxLayoutAlign="center center">
+            <mat-card fxFlex="320px" class="mat-elevation-z12">
+                <form [formGroup]="formGroup">
+                    <mat-card-header>
+                        <mat-card-title>{{'general.login' | translate}}</mat-card-title>
+                    </mat-card-header>
+
+                    <mat-card-content>
+                        <div fxLayout="column" fxLayoutAlign="space-evenly stretch" fxLayoutGap="10px">
+                            <mat-form-field fxFlex>
+                                <mat-label>{{'general.username' | translate}}</mat-label>
+                                <input matInput type="text" maxlength="64" formControlName="username" required autoFocus>
+                            </mat-form-field>
+
+                            <mat-form-field fxFlex>
+                                <mat-label>{{'general.password' | translate}}</mat-label>
+                                <input matInput type="password" minlength="4" maxlength="64" formControlName="password" required>
+                            </mat-form-field>
+                        </div>
+                    </mat-card-content>
+
+                    <mat-card-actions>
+                        <div fxLayout="column" fxLayoutAlign="space-evenly stretch">
+                            <button mat-raised-button type="submit" color="accent" [disabled]="formGroup.invalid" (click)="login()">
+                                {{'actions.login' | translate}}
+                            </button>
+                        </div>
+                    </mat-card-actions>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+
+</div>
