@@ -1,8 +1,8 @@
 <div fxFill fxLayout="column" fxLayoutAlign="start stretch">
 
     <mat-sidenav-container class="sidenav-container" fxFlex>
-        <mat-sidenav #drawer class="sidenav" fixedInViewport [mode]="'side'" opened="true" [attr.role]="'navigation'">
 
+        <mat-sidenav #drawer class="sidenav" fixedInViewport [mode]="'side'" opened="true" [attr.role]="'navigation'">
             <mat-nav-list>
                 <div mat-subheader>{{'general.general' | translate}}</div>
                 <a mat-list-item routerLink="/">
@@ -24,7 +24,6 @@
         </mat-sidenav>
 
         <mat-sidenav-content cdkScrollable fxLayout="column" fxLayoutAlign="start stretch">
-
             <mat-toolbar fxFlex="64px">
                 <span>.:: Storage ::.</span>
                 <div fxFlex fxFlexAlign="end"></div>
@@ -34,8 +33,8 @@
             <div class="sidenav-content" fxFlex>
                 <router-outlet></router-outlet>
             </div>
-
         </mat-sidenav-content>
+
     </mat-sidenav-container>
 
 </div>

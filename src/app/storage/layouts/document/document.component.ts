@@ -35,6 +35,7 @@ export class DocumentComponent implements OnInit {
 
     displayedColumns = [
         'id',
+        'file_name',
         'path',
         'uploaded_at',
     ];
