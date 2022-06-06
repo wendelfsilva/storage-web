@@ -19,11 +19,11 @@ export class DocumentComponent implements OnInit {
     @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
 
     formUpload = this.fb.group({
-        path: ["/documents/reviews/example.jpg", Validators.pattern('^(\\/[A-z0-9-_+]+)(\\/\\w+)*([\\/]|[.][a-zA-Z]+)?$')],
+        path: [null, Validators.pattern('^(\\/[A-z0-9-_+]+)(\\/\\w+)*([\\/]|[.][a-zA-Z]+)?$')],
     });
 
     formDownload = this.fb.group({
-        path: ["/documents/reviews/example.jpg", Validators.pattern('^\\/[A-z0-9-_+]+.*$')]
+        path: [null, Validators.pattern('^\\/[A-z0-9-_+]+.*$')]
     });
 
     formSearch = this.fb.group({
