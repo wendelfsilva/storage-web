@@ -40,7 +40,9 @@ export class DocumentService {
         data.append("path", path);
         data.append("file", file);
 
-        return this.http.post<Document>(this._URL, data, this._options());
+
+        const url = `${this._URL}upload/`;
+        return this.http.post<Document>(url, data, this._options());
     }
 
     download(path: string): Observable<Blob> {

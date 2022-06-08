@@ -71,7 +71,6 @@ export class DocumentComponent implements OnInit {
         this.service.clearParams();
         this.service.addParams('limit', this.paginator.pageSize);
         this.service.addParams('offset', (this.paginator.pageIndex * this.paginator.pageSize));
-        this.service.addParams('current_revision', true);
 
         if (this.formSearch.value.path) {
             this.service.addParams('path', this.formSearch.value.path);
@@ -104,6 +103,7 @@ export class DocumentComponent implements OnInit {
             const reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = () => {
+                this.service.clearParams();
                 this.service.upload(path, file).subscribe(() => {
                     this.toast.success('general.uploaded_successfully');
                     this.search();
@@ -120,6 +120,7 @@ export class DocumentComponent implements OnInit {
         const path = this.formDownload.value.path;
         const fileName = path.split('/').pop().split('#')[0].split('?')[0];
 
+        this.service.clearParams();
         this.service.download(path).subscribe(response => {
             this.toast.success('general.downloaded_successfully');
             this._downloadFileFromBlob(response, fileName);
